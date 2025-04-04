@@ -24,7 +24,15 @@ const UserFollow = ({ person }) => {
     return (
         <div className="follower">
             <div>
-                <img src={person.profilePicture?.startsWith("data:image") ? person.profilePicture : serverPublic + "defaultProfile.png"} alt="" className='followerImg' />
+                <img 
+                    src={person.profilePicture ? 
+                        (person.profilePicture.startsWith("data:image") ? 
+                            person.profilePicture 
+                            : `${serverPublic}images/${person.profilePicture}`)
+                        : `${serverPublic}images/defaultProfile.png`} 
+                    alt="" 
+                    className='followerImg' 
+                />
                 <div className="name">
                     <span>{person.firstname}</span>
                     <span>@{person.firstname} {person.lastname}</span>
